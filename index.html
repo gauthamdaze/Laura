@@ -347,7 +347,7 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="section-padding products">
+     <section id="products" class="section-padding products">
         <div class="container">
             <div class="text-center reveal-up">
                 <span class="section-subtitle">Curated for you</span>
@@ -355,14 +355,30 @@
             </div>
 
             <div class="product-grid">
-                <!-- Product 1 -->
+                <!-- Product 1: Classic Goat Milk (Round Shape) -->
                 <article class="product-card reveal-up stagger-1">
                     <div class="p-image">
-                        <img src="https://unsplash.com/photos/green-and-brown-sliced-cheese-DlZD4V2j9oM" alt="Goat Milk Soap">
+                        <!-- SVG: Round Creamy Soap -->
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="creamGrad" cx="30%" cy="30%" r="70%">
+                                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#F3EFE6;stop-opacity:1" />
+                                </radialGradient>
+                            </defs>
+                            <!-- Shadow -->
+                            <ellipse cx="100" cy="145" rx="60" ry="10" fill="#000" opacity="0.1"/>
+                            <!-- Soap Body -->
+                            <circle cx="100" cy="100" r="65" fill="url(#creamGrad)" stroke="#E6DDC4" stroke-width="1"/>
+                            <!-- Shine -->
+                            <ellipse cx="80" cy="80" rx="20" ry="10" fill="#fff" opacity="0.6" transform="rotate(-45 80 80)"/>
+                            <!-- Logo imprint -->
+                            <text x="100" y="105" font-family="serif" font-size="14" fill="#D4C5A3" text-anchor="middle" letter-spacing="1" opacity="0.7">LAURA</text>
+                        </svg>
                     </div>
                     <div class="p-info">
                         <h3 class="p-title">Classic Goat Milk</h3>
-                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Unscented & Pure</p>
+                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Shape: Gentle Round</p>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
                             <span class="p-price">₹250</span>
                             <button class="add-btn"><i class="fas fa-plus"></i></button>
@@ -370,14 +386,33 @@
                     </div>
                 </article>
 
-                <!-- Product 2 -->
+                <!-- Product 2: Lemongrass (Textured Block) -->
                 <article class="product-card reveal-up stagger-2">
                     <div class="p-image">
-                        <img src="https://images.unsplash.com/photo-1619448375635-4299b66236b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Lemongrass Soap">
+                        <!-- SVG: Rectangular Green Soap -->
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                             <defs>
+                                <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E8F1E9;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#C5D6CD;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Shadow -->
+                            <rect x="55" y="135" width="100" height="20" rx="10" fill="#000" opacity="0.1"/>
+                            <!-- Soap Body -->
+                            <rect x="50" y="60" width="100" height="80" rx="5" fill="url(#greenGrad)" stroke="#8DA399" stroke-width="1"/>
+                            <!-- Texture Dots -->
+                            <circle cx="60" cy="70" r="1.5" fill="#5F736A" opacity="0.3"/>
+                            <circle cx="70" cy="120" r="2" fill="#5F736A" opacity="0.3"/>
+                            <circle cx="130" cy="80" r="1.5" fill="#5F736A" opacity="0.3"/>
+                            <circle cx="110" cy="110" r="2" fill="#5F736A" opacity="0.3"/>
+                            <!-- Leaf detail -->
+                            <path d="M120 70 Q130 60 140 70" stroke="#8DA399" fill="none" opacity="0.6"/>
+                        </svg>
                     </div>
                     <div class="p-info">
                         <h3 class="p-title">Zesty Lemongrass</h3>
-                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Exfoliating Bar</p>
+                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Shape: Textured Block</p>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
                             <span class="p-price">₹280</span>
                             <button class="add-btn"><i class="fas fa-plus"></i></button>
@@ -385,14 +420,27 @@
                     </div>
                 </article>
 
-                <!-- Product 3 -->
+                <!-- Product 3: Combo Pack (Stack) -->
                 <article class="product-card reveal-up stagger-3">
                     <div class="p-image">
-                        <img src="https://images.unsplash.com/photo-1596434479902-86927a7c2957?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Combo Pack">
+                        <!-- SVG: Stack of 3 Soaps -->
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shadow -->
+                             <ellipse cx="100" cy="145" rx="55" ry="8" fill="#000" opacity="0.1"/>
+                            <!-- Bottom Soap -->
+                            <rect x="50" y="115" width="100" height="25" rx="4" fill="#E6DDC4" stroke="#D4C5A3"/>
+                            <!-- Middle Soap -->
+                            <rect x="50" y="85" width="100" height="25" rx="4" fill="#C5D6CD" stroke="#8DA399"/>
+                            <!-- Top Soap -->
+                            <rect x="50" y="55" width="100" height="25" rx="4" fill="#FDFBF7" stroke="#E6DDC4"/>
+                            <!-- Ribbon -->
+                            <line x1="100" y1="55" x2="100" y2="140" stroke="#2C2420" stroke-width="3" stroke-dasharray="4"/>
+                            <path d="M100 55 Q80 35 100 35 Q120 35 100 55" fill="none" stroke="#2C2420" stroke-width="2"/>
+                        </svg>
                     </div>
                     <div class="p-info">
                         <h3 class="p-title">The Essentials Trio</h3>
-                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Value Bundle</p>
+                        <p class="section-subtitle" style="margin-bottom:5px; color:#999;">Format: Gift Bundle</p>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
                             <span class="p-price">₹700</span>
                             <button class="add-btn"><i class="fas fa-plus"></i></button>
@@ -408,7 +456,50 @@
         <div class="container about-grid">
             <div class="about-img-wrap reveal-left">
                 <!-- Fixed Image: Hands cutting soap -->
-                <img src="https://images.unsplash.com/photo-1629196914168-3a964433845c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Making Soap Handmade">
+           <!-- Replace the <img ...> in the About Section with this SVG container -->
+<div class="about-svg-wrap reveal-left" style="width: 100%; max-width: 600px;">
+    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));">
+        <!-- 1. Background Abstract Shape -->
+        <path d="M50 200 Q20 50 200 40 T450 150 T480 300 T250 380 T50 200" fill="#F3EFE6"/>
+
+        <!-- 2. Wooden Cutting Board -->
+        <path d="M60 280 L440 280 L420 320 L80 320 Z" fill="#E6DDC4"/>
+        <path d="M80 320 L420 320 L420 330 L80 330 Z" fill="#D4C5A3"/> <!-- Board thickness -->
+
+        <!-- 3. The Main Soap Loaf -->
+        <g transform="translate(100, 160)">
+            <!-- Side Face -->
+            <rect x="0" y="0" width="220" height="120" rx="4" fill="#FDFBF7" stroke="#D4C5A3" stroke-width="2"/>
+            <!-- Top Face (Perspective) -->
+            <path d="M0 0 L30 -30 L250 -30 L220 0 Z" fill="#FFFFFF" stroke="#D4C5A3" stroke-width="2"/>
+            <!-- Side Detail (Depth) -->
+            <path d="M220 0 L250 -30 L250 90 L220 120 Z" fill="#E8F1E9" stroke="#D4C5A3" stroke-width="2"/>
+            
+            <!-- Texture Dots (Herbs/Oats) -->
+            <circle cx="40" cy="40" r="1.5" fill="#8DA399"/>
+            <circle cx="80" cy="80" r="2" fill="#8DA399"/>
+            <circle cx="150" cy="30" r="1.5" fill="#8DA399"/>
+            <circle cx="180" cy="90" r="2" fill="#8DA399"/>
+        </g>
+
+        <!-- 4. The Sliced Piece (Falling away slightly) -->
+        <g transform="translate(330, 165) rotate(5)">
+             <path d="M0 0 L25 0 L25 120 L0 120 Z" fill="#FDFBF7" stroke="#D4C5A3" stroke-width="2"/>
+             <path d="M0 0 L15 -20 L40 -20 L25 0 Z" fill="#FFFFFF" stroke="#D4C5A3" stroke-width="2"/>
+             <path d="M25 0 L40 -20 L40 100 L25 120 Z" fill="#E8F1E9" stroke="#D4C5A3" stroke-width="2"/>
+        </g>
+
+        <!-- 5. The Knife / Cutter -->
+        <g transform="translate(320, 110)">
+            <!-- Blade -->
+            <path d="M0 0 L10 0 L10 180 L0 180 Z" fill="#C5D6CD" opacity="0.9"/>
+            <!-- Handle -->
+            <rect x="-10" y="-10" width="30" height="20" rx="5" fill="#5F736A"/>
+            <!-- Reflection on blade -->
+            <path d="M2 20 L6 20 L6 160 L2 160 Z" fill="white" opacity="0.4"/>
+        </g>
+    </svg>
+</div>
                 <div class="about-accent"></div>
             </div>
             <div class="text-content reveal-right">
