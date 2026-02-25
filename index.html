@@ -596,66 +596,16 @@
         });
     </script>
     <script>
-/* =========================
-   INLINE MANIFEST CREATION
-========================= */
-const manifestData = {
-  name: "Laura Organic Skincare",
-  short_name: "Laura",
-  start_url: ".",
-  display: "standalone",
-  background_color: "#FDFBF7",
-  theme_color: "#5F736A",
-  description: "Handcrafted organic soaps from Bangalore.",
-  icons: [
-    {
-      src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABWKLW/AAAAAklEQVR4AewaftIAAABYSURBVO3BQY4AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwC8G1QABVgkZlQAAAABJRU5ErkJggg==",
-      sizes: "192x192",
-      type: "image/png"
-    },
-    {
-      src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAAAklEQVR4AewaftIAAABYSURBVO3BQY4AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwC8G1QABVgkZlQAAAABJRU5ErkJggg==",
-      sizes: "512x512",
-      type: "image/png"
-    }
-  ]
-};
-
-const blob = new Blob([JSON.stringify(manifestData)], {type: 'application/json'});
-const manifestURL = URL.createObjectURL(blob);
-document.getElementById("manifest-placeholder").setAttribute("href", manifestURL);
 
 
-/* =========================
-   INLINE SERVICE WORKER
-========================= */
 
-if ("serviceWorker" in navigator) {
-  const swCode = `
-    const CACHE = "laura-pwa-v1";
-    self.addEventListener("install", event => {
-      event.waitUntil(
-        caches.open(CACHE).then(cache => {
-          return cache.addAll(["./"]);
-        })
-      );
-    });
 
-    self.addEventListener("fetch", event => {
-      event.respondWith(
-        caches.match(event.request).then(response => {
-          return response || fetch(event.request);
-        })
-      );
-    });
-  `;
-
-  const swBlob = new Blob([swCode], { type: "text/javascript" });
-  const swURL = URL.createObjectURL(swBlob);
-
-  navigator.serviceWorker.register(swURL)
-    .then(() => console.log("PWA Ready"))
-    .catch(err => console.log("SW Failed", err));
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered'))
+      .catch(err => console.log('SW failed', err));
+  });
 }
 </script>
 </body>
