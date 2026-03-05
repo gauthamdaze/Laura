@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lara Organics | Nature's Touch</title>
+    <style>
+        /* Import Premium Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            /* --- RICH PALETTE --- */
+            --bg-color: #fdfbf7;      /* Warm Parchment */
+            --bg-secondary: #f4f1ea;  /* Slightly darker beige */
+            
+            --primary-green: #2c3e2e; /* Deep Forest Green */
+            --primary-light: #5a705e; /* Sage Green */
+            
+            --accent-gold: #c5a059;   /* Metallic Gold */
+            --accent-gold-light: #e6c888;
+            
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            
+            --card-shadow: 0 15px 35px rgba(44, 62, 46, 0.08);
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(#dcb363 0.5px, transparent 0.5px), 
+                radial-gradient(#dcb363 0.5px, var(--bg-color) 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed; /* Keeps pattern static */
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            background: linear-gradient(180deg, #fffcf8 0%, #f0ebd8 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 6px solid var(--primary-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Decorative Gold Line */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 4px; /* Just above the green border */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        /* LOGO FIX */
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+            /* This blends the white background of the JPG into the header */
+            mix-blend-mode: multiply; 
+            filter: contrast(1.1);
+        }
+
+        /* Gold Ring around logo */
+        .logo-frame {
+            position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    border-radius: 49%;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 0 10px rgba(197, 160, 89, 0.1);
+    pointer-events: none;
+        }
+
+        .tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .intro-box {
+            background: #fff;
+            border: 1px solid var(--accent-gold);
+            padding: 30px;
+            border-radius: 4px; /* Classic sharp corners or slightly rounded */
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        /* Corner accents for the intro box */
+        .intro-box::before, .intro-box::after {
+            content: "✦";
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            position: absolute;
+        }
+        .intro-box::before { top: 10px; left: 10px; }
+        .intro-box::after { bottom: 10px; right: 10px; }
+
+        .intro-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            display: inline-block;
+            background: var(--bg-color); /* Matches body bg to hide line behind text */
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Line behind title */
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            z-index: 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        /* --- PRODUCT CARD (Rich Style) --- */
+        .card {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.2); /* Subtle gold border */
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(44, 62, 46, 0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .card-image {
+            height: 260px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.15);
+        }
+
+        .card-content {
+            padding: 30px 25px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+        }
+
+        /* Badge Style */
+        .badge {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-green);
+            padding: 4px 12px;
+            border: 1px solid var(--primary-green);
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 auto 15px auto;
+        }
+
+        .product-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Decorative leaf icon on hover */
+        .card-icon {
+            margin-top: auto;
+            padding-top: 15px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+        
+        .card:hover .card-icon {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-green);
+            color: #f0ebd8;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 80px;
+            border-top: 5px solid var(--accent-gold);
+        }
+        
+        footer p {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        /* --- PDF BUTTON --- */
+        .pdf-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-green);
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pdf-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .logo-img { width: 220px; height: 220px; }
+            .logo-frame { width: 200px; height: 200px; }
+            .section-title h2 { font-size: 2rem; }
+            header { padding: 40px 15px; }
+            .product-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            .pdf-btn { display: none; }
+            body { background: white; background-image: none; }
+            header { border-bottom: 2px solid black; -webkit-print-color-adjust: exact; }
+            .logo-img { mix-blend-mode: normal; } /* Disable blend mode for print */
+            .logo-frame { border-color: #000; }
+            .intro-box { border: 1px solid #ddd; box-shadow: none; }
+            .card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+            h2, h3, p { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="pdf-btn" onclick="window.print()">
+    <span>🖨️</span> Save Catalog
+</button>
+
+<header>
+    <!-- Logo with Circular Frame and Blend Mode -->
+    <div class="logo-wrapper">
+        <img src="https://iili.io/qn1pC7a.jpg" alt="Lara Organics Logo" class="logo-img">
+        <div class="logo-frame"></div>
+    </div>
+    
+    <div class="tagline">Purity, Perfected by Hand</div>
+    
+    <div class="intro-box">
+        <p class="intro-text">
+            "At Lara Organics, every creation is slow-crafted using cold-pressed oils, pure herbs, and essential botanicals. Experience nature’s pure touch: simple, honest, and timelessly luxurious."
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    
+    <div class="section-title">
+        <h2>The Collection</h2>
+    </div>
+
+    <div class="product-grid">
+
+        <!-- Item 1 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1629198728257-2e557b322678?q=80&w=800&auto=format&fit=crop" alt="Coconut Soap">
+            </div>
+            <div class="card-content">
+                <span class="badge">Hydration</span>
+                <h3 class="product-title">Coconut Soap</h3>
+                <p class="product-desc">Deeply hydrates and cools the skin. Reduces dryness and restores softness. Best for dry to normal skin.</p>
+                <div class="card-icon">🌿</div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?q=80&w=800&auto=format&fit=crop" alt="Nalangu Maavu Women">
+            </div>
+            <div class="card-content">
+                <span class="badge">Women's Care</span>
+                <h3 class="product-title">Nalangu Maavu</h3>
+                <p class="product-desc">Enhances natural glow, evens tone, and prevents acne. Suitable for daily use on all skin types gently.</p>
+                <div class="card-icon">🌸</div>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop" alt="Goat Milk Soap">
+            </div>
+            <div class="card-content">
+                <span class="badge">Sensitive Skin</span>
+                <h3 class="product-title">Goat Milk Soap</h3>
+                <p class="product-desc">Nourishes deeply, softens rough patches, and maintains moisture balance. Ideal for dry and aging skin.</p>
+                <div class="card-icon">🥛</div>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1547793548-7a0e7dfdb24f?q=80&w=800&auto=format&fit=crop" alt="Nalangu Maavu Men">
+            </div>
+            <div class="card-content">
+                <span class="badge">Men's Care</span>
+                <h3 class="product-title">Nalangu Maavu</h3>
+                <p class="product-desc">Herbal cleanser that refreshes skin, removes tan, and controls oil. Great for men with oily or rough skin.</p>
+                <div class="card-icon">🍃</div>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1590156111005-728b245a195b?q=80&w=800&auto=format&fit=crop" alt="Skin Glow Soap">
+            </div>
+            <div class="card-content">
+                <span class="badge">Radiance</span>
+                <h3 class="product-title">Skin Glow Soap</h3>
+                <p class="product-desc">Brightens complexion, gently exfoliates dead cells, evens skin tone. Suitable for all skin types daily.</p>
+                <div class="card-icon">✨</div>
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?q=80&w=800&auto=format&fit=crop" alt="Goat Milk Charcoal">
+            </div>
+            <div class="card-content">
+                <span class="badge">Detox</span>
+                <h3 class="product-title">Charcoal Detox</h3>
+                <p class="product-desc">Detoxifies pores, removes dirt, balances oil levels. Best for oily, acne-prone, and combination skin.</p>
+                <div class="card-icon">🌑</div>
+            </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=800&auto=format&fit=crop" alt="Premium Soap">
+            </div>
+            <div class="card-content">
+                <span class="badge">Luxury</span>
+                <h3 class="product-title">Premium Soap</h3>
+                <p class="product-desc">Rich creamy lather gently cleanses, hydrates deeply, refreshes. Suits all skin types for daily use.</p>
+                <div class="card-icon">👑</div>
+            </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1528740561666-dc24705f08a7?q=80&w=800&auto=format&fit=crop" alt="Root Revival Oil">
+            </div>
+            <div class="card-content">
+                <span class="badge">Hair Care</span>
+                <h3 class="product-title">Root Revival Oil</h3>
+                <p class="product-desc">Strengthens roots, boosts growth, prevents dandruff, nourishes scalp. For dry, oily, and weak hair.</p>
+                <div class="card-icon">💧</div>
+            </div>
+        </div>
+
+        <!-- Item 9 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop" alt="Glo+ Oil">
+            </div>
+            <div class="card-content">
+                <span class="badge">Face Oil</span>
+                <h3 class="product-title">Lara Glo+ Oil</h3>
+                <p class="product-desc">Evens tone, reduces marks, adds radiance, deeply hydrates. Suitable for dull, dry, and uneven skin.</p>
+                <div class="card-icon">🌟</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Lara Organics. Naturally Balanced, Chemical-Free.</p>
+</footer>
+
+</body>
+</html>
